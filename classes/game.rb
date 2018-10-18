@@ -14,6 +14,7 @@ class Game
     [6, 4, 2]
   ].freeze
   # Important variables
+  attr_accessor :game_board
   class Player
     attr_accessor :name, :sign, :moves
     def initialize(name, sign)
@@ -48,7 +49,7 @@ class Game
     # Welcome screen - call show_title method
     show_title
     # Draw initial board - initialize board
-    game_board = Board.new
+    @game_board = Board.new
     generate_board(game_board.board)
     
     # Create players1 and 2 - initialize both players
@@ -68,14 +69,22 @@ class Game
 
   def turn(player)
     # the player will be prompted to choose a square
+    puts "Please enter your square"
+    square_select = gets.chomp!
     # the response of the player will first be validated if it's between 0 - 8
+    until square_select.between?("0", "8") || game_board.include?square_select.to_i
+      puts "Hey! wrong input.Please enter your square"
+      square_select = gets.chomp!
+    end
     # the response of the player will be checked if it's already unavailable
+
     # if the square is still available then @@board[choice] = player.sign
     # and then push the choice (convert it first to an integer) to player.moves
     # then call generate_board to visualize new state of the board
+    
   end
 
-  def game_cycle(player1,player2)
+  def game_cycle(player1, player2)
   
   end
 
