@@ -76,7 +76,7 @@ class Game
     square_select = gets.chomp!
     # the response of the player will first be validated if it's between 0 - 8
     # the response of the player will be checked if it's already unavailable
-    until square_select.between?("0", "8") || game_board.board.include?(square_select.to_i)
+    until square_select.between?("0", "8") && game_board.board.include?(square_select.to_i)
       puts "Hey! invalid input. Select a valid square!"
       square_select = gets.chomp!
     end
@@ -89,14 +89,26 @@ class Game
   end
 
   def game_cycle(player1, player2)
-    turn(player1)
-    turn(player1)
-    turn(player1)
-    turn(player2)
+    game_board.board.size.times do
+      turn(player1)
+      if check_win(player1) then
+        puts "Player One Win!"
+        break
+      end
+      turn(player2)
+      if check_win(player2) then
+        puts "Player Two Win!"
+        break
+      end
+    end
+    puts "Match Draw"
   end
 
   def check_win(player)
-    
+    WINNING_COMBOS.each do |combo|
+      return true if combo.all? { |square| player.moves.include?(square) }
+    end
+    false
   end
 
   # TODO: remove this demo class
