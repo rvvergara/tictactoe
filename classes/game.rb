@@ -93,15 +93,17 @@ class Game
       turn(player1)
       if check_win(player1) then
         puts "Player One Win!"
-        break
+        return
       end
+      break if check_draw
       turn(player2)
       if check_win(player2) then
         puts "Player Two Win!"
-        break
+        return
       end
+      break if check_draw
     end
-    puts "Match Draw"
+    puts "It's a Draw!!!"
   end
 
   def check_win(player)
@@ -109,6 +111,10 @@ class Game
       return true if combo.all? { |square| player.moves.include?(square) }
     end
     false
+  end
+
+  def check_draw
+    return true if game_board.board.all? {|c| c.is_a? String}
   end
 
   # TODO: remove this demo class
