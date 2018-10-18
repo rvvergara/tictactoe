@@ -1,0 +1,151 @@
+player1 = "X"
+player2 = "O"
+
+board = [0,1,2,3,4,5,6,7,8]
+
+visually this is the board :
+
+0 1 2
+3 4 5
+6 7 8
+					
+WINNING_COMBOS = array of arrays of winning combinations of squares
+
+= [
+   [0,1,2],
+   [3,4,5],
+   [6,7,8],
+   [0,3,6],
+   [1,4,7],
+   [2,5,8],
+   [0,4,8],
+   [6,4,2]	
+  ]
+
+
+turn :
+check which player is playing
+
+player choice = prompt current player for choice
+
+check if player choice is between "0" and board.length.to_s
+- if it is not then "Invalid option" then ask for user choice again
+
+check if player choice is still inside the board
+for example 
+player1 choice = "4"
+(before first ever move)-> board = [0,1,2,3,4,5,6,7,8] -> "4".to_i is still in the board so:
+(after move) -> board = [0,1,2,3,"X",5,6,7,8]
+-then player1's moves array = [4]
+
+check then if player1 has won:
+check player1's current moves array against each element (each is an array) of the winning_combos array. If all of a particular combo's elements are present in player1's moves array the player1 has won
+
+for example (after many moves):
+player1's moves array = [4,2,7,6]
+checking player1's moves array against "each" element of the winning_combos array
+   [0,1,2] vs [4,2,7,6] -> only 2 is in moves
+   [3,4,5] vs [4,2,7,6] -> only 4 is in moves
+   [6,7,8] vs [4,2,7,6] -> only 6, 7 are in moves
+   [0,3,6] vs [4,2,7,6] -> only 6 are in moves
+   [1,4,7] vs [4,2,7,6] -> only 4,7 are in moves
+   [2,5,8] vs [4,2,7,6] -> none are in moves
+   [0,4,8] vs [4,2,7,6] -> only 4 are in moves
+   [6,4,2] vs [4,2,7,6] -> *** 6,4,2 are all in moves!!!***
+
+current status of board array = [0,1,"X",3,"X",5,"X","X",8]
+visually:
+
+0 1 X
+3 X 5
+X X 8
+
+visually it is evident that player1 has won!
+
+if player1 has won then check_win will call game_over method
+
+scenario2: if player1's moves don't make him win, example moves = [4,2,7]
+board = [0,1,"X",3,"X",5,6,"X",8]
+visually:
+
+0 1 X
+3 X 5
+6 X 8
+
+then check_win will check if board is completely occupied (no elements in the array is a number)
+and if it is fully occupied and nobody has won then will return that it's a tie..
+
+then player1 turn will be off and player2's turn will be on
+
+then the player2's turn logic will be the same as player1's
+
+
+
+IF THIS LOGIC IS GOOD then:
+
+1. Game will be main class (all other classes are nested inside it)
+   - game will have a constant called  
+WINNING_COMBOS = 
+[
+   [0,1,2],
+   [3,4,5],
+   [6,7,8],
+   [0,3,6],
+   [1,4,7],
+   [2,5,8],
+   [0,4,8],
+   [6,4,2]	
+  ]
+
+   - game will have game_start method
+     - game_start will call create_player method
+     - game will have an instance variable called @board = Board.new()
+     - game start will call generate_board method
+
+   - game will have generate_board method (which will always draw current status of board) based on current status of @board
+      - generate_board(board) will loop from 0 to @board.board.length-1 and draw:
+      if board[i].is_a? String then "|_X_|" or "|_O_|" depending on the character in that square
+      else it will just puts "|___|"
+      if @board.board.length % i == 0 then print an additional "\n"
+
+   - game will have gameover method
+     game_over method will just puts whoever wins or if it's a tie
+
+   - game will have change_turns method
+
+   - game will have check_win method
+      - check_win will do the functionality described above
+      - it will also check if all squares are occupied
+      - if all squares are occupied and nobody has won then it will return that it's a tie
+      - it will return 
+
+   - game will have reset method
+     - reset method will set players' moves back to []
+     - reset method will reassign @board = Board.new()
+     - reset will then call again generate_board(player_1,player_2)
+
+   - will have a class variable called @@players_count starting from 0
+
+   - will have method called create_player which will instantiate Player class
+      - each instantiation will += 1 to @@players_count
+      - if @@players_count == 1 then instantiate players with Player.new("Player1", "X")
+      - if @@players_count == 2 then instantiate players with Player.new("Player2", "O")
+      - create_player will only be called if method game_start is called
+
+2. Board class
+   - board will have @board as instance variable (array of numbers) and will be instantiated as
+   @board = [0,1,2,3,4,5,6,7,8]
+   
+
+3. Player class -> this will have a method called turn (whose logic is described above)
+    - each player will have an instance variable called @name and it will be either "Player1" or "Player2"
+    - each player will have instance variable @sign and it will be "X" or "Y" depending if Player1 or Player2
+    - player class will have moves array (array of numbers representing squares player has occupied)
+    - turn method will be as described above
+4. Player class will have two subclasses -> Human, Computer -> the Computer class will override the turn method (the only difference is that the Computer's choice is random)
+
+
+
+
+
+
