@@ -10,9 +10,13 @@ class Game
       @sign = sign
       @moves = []
     end
-
-    
   end
+  def show_title
+      puts "]]]]]]]] Tic - Tac - Toe [[[[[[[["
+      puts "================================="
+      puts "-- Created Date - 18 Sep 2018 --"
+      puts "== Author - Ryan & Dipto =="
+    end
   # TODO: remove this demo class
   def test
     puts 'Hi there'
