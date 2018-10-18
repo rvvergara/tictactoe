@@ -72,7 +72,7 @@ class Game
     puts "Please enter your square"
     square_select = gets.chomp!
     # the response of the player will first be validated if it's between 0 - 8
-    until square_select.between?("0", "8") || game_board.include?square_select.to_i
+    until square_select.between?("0", "8") || game_board.include?(square_select.to_i)
       puts "Hey! wrong input.Please enter your square"
       square_select = gets.chomp!
     end
