@@ -36,12 +36,12 @@ module GameActions
   # generate_board will draw board itself
   def generate_board(arr)
     (0...arr.size).each do |i|
-      print "\n" if i == 0 || i == 3 || i == 6
-      print "|" if i == 1 || i == 4 || i == 7
+      print "\n" if [0, 3, 6].include? i
+      print "|" if [1, 4, 7].include? i
       print arr[i].class == String ? " #{arr[i]} " : "   "
-      print "|" if i == 1 || i == 4 || i == 7
-      print "\n" if i == 2 || i == 5 || i == 8
-      print "------------" if i == 2 || i == 5
+      print "|" if  [1, 4, 7].include? i
+      print "\n" if [2, 5, 8].include? i
+      print "------------" if [2, 5].include? i
     end
   end
 
@@ -91,12 +91,5 @@ module GameActions
 
   def check_draw
     return true if board.all? { |c| c.is_a? String }
-  end
-
-  # TODO: remove this demo class
-  def test
-    puts "Hi there"
-    board = Board.new
-    print board.board
   end
 end
