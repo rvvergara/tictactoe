@@ -15,6 +15,7 @@ class Game
   ].freeze
   # Important variables
   attr_accessor :game_board
+
   class Player
     attr_accessor :name, :sign, :moves
     def initialize(name, sign)
@@ -50,13 +51,15 @@ class Game
     show_title
     # Draw initial board - initialize board
     @game_board = Board.new
-    generate_board(game_board.board)
+    generate_board(@game_board.board)
     
     # Create players1 and 2 - initialize both players
     player_one = Player.new("Player1","X")
     player_two = Player.new("Player2","O")
     
     # Run a loop wherein players1 and 2 will each take turns until one wins or it"s a draw - game_cycle
+    game_cycle(player_one,player_two)
+
 
   end
 
@@ -69,15 +72,16 @@ class Game
 
   def turn(player)
     # the player will be prompted to choose a square
-    puts "Please enter your square"
+    puts "#{player.name} your move!"
     square_select = gets.chomp!
     # the response of the player will first be validated if it's between 0 - 8
-    until square_select.between?("0", "8") || game_board.include?(square_select.to_i)
-      puts "Hey! wrong input.Please enter your square"
-      square_select = gets.chomp!
-    end
     # the response of the player will be checked if it's already unavailable
 
+    until square_select.between?("0", "8") || game_board.board.include?(square_select.to_i)
+      puts "Hey! invalid input. Select a valid square!"
+      square_select = gets.chomp!
+    end
+    
     # if the square is still available then @@board[choice] = player.sign
     # and then push the choice (convert it first to an integer) to player.moves
     # then call generate_board to visualize new state of the board
@@ -85,7 +89,8 @@ class Game
   end
 
   def game_cycle(player1, player2)
-  
+    turn(player1)
+    turn(player2)
   end
 
   def check_win(player)
@@ -94,5 +99,7 @@ class Game
   # TODO: remove this demo class
   def test
     puts "Hi there"
+    board = Board.new
+    print board.board
   end
 end
