@@ -24,6 +24,7 @@ module GameActions
 
     # Run a loop wherein players1 and 2 will each take turns until one wins or it"s a draw - game_cycle
     game_cycle(player_one, player_two)
+    game_end
   end
 
   def show_title
@@ -91,5 +92,19 @@ module GameActions
 
   def check_draw
     return true if board.all? { |c| c.is_a? String }
+  end
+
+  def game_end
+    puts "Hey! Do you wanna play again?[y,n]"
+    choice = gets.chomp!.downcase
+    until %w(y n yes no).include?(choice)
+      puts "Invalid input!Play again?[y,n]" 
+      choice = gets.chomp!.downcase
+    end
+    if %w(y yes).include?(choice)
+      Game.new.game_start
+    else
+      exit
+    end
   end
 end
