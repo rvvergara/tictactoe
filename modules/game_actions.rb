@@ -1,4 +1,5 @@
 require_relative "../classes/player"
+require_relative "../assets"
 # WINNING COMBOS CONSTANT
 WINNING_COMBOS = [
   [0, 1, 2],
@@ -13,6 +14,7 @@ WINNING_COMBOS = [
 
 # Important Methods for game
 module GameActions
+  include Assets
   def game_start
     # Welcome screen - call show_title method
     show_title
@@ -25,25 +27,6 @@ module GameActions
     # Run a loop wherein players1 and 2 will each take turns until one wins or it"s a draw - game_cycle
     game_cycle(player_one, player_two)
     game_end
-  end
-
-  def show_title
-    puts "]]]]]]]] Tic - Tac - Toe [[[[[[[["
-    puts "================================="
-    puts "-- Created Date - 18 Sep 2018 --"
-    puts "== Author - Ryan & Dipto =="
-  end
-
-  # generate_board will draw board itself
-  def generate_board(arr)
-    (0...arr.size).each do |i|
-      print "\n" if [0, 3, 6].include? i
-      print "|" if [1, 4, 7].include? i
-      print arr[i].class == String ? " #{arr[i]} " : "   "
-      print "|" if  [1, 4, 7].include? i
-      print "\n" if [2, 5, 8].include? i
-      print "------------" if [2, 5].include? i
-    end
   end
 
   def turn(player)
@@ -97,13 +80,14 @@ module GameActions
   def game_end
     puts "Hey! Do you wanna play again?[y,n]"
     choice = gets.chomp!.downcase
-    until %w(y n yes no).include?(choice)
-      puts "Invalid input!Play again?[y,n]" 
+    until %w[y n yes no].include?(choice)
+      puts "Invalid input!Play again?[y,n]"
       choice = gets.chomp!.downcase
     end
-    if %w(y yes).include?(choice)
+    if %w[y yes].include?(choice)
       Game.new.game_start
     else
+      puts "Thank you dawg!!! Have some Kitkat"
       exit
     end
   end
