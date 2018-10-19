@@ -22,7 +22,6 @@ class Player
     # then call generate_board to visualize new state of the board
     generate_board
   end
-
 end
 
 # Human subclass
@@ -41,6 +40,7 @@ class Human < Player
   end
 end
 
+# Computer Class
 class Computer < Player
   def make_choice
     # the computer will be randomly choose a square
