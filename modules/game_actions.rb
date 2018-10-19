@@ -18,17 +18,32 @@ module GameActions
   def game_start
     # Welcome screen - call show_title method
     show_title
+    # Create players1 and 2 - initialize both players
+    player_one = Human.new("Player1", "X",self)
+    mode = game_mode
+    player_two = Human.new("Player2", "O",self) if mode == 2
+    player_two = Computer.new("Computer","0",self) if mode == 1
+
     # Draw initial board - initialize board
     generate_board(board)
-    # Create players1 and 2 - initialize both players
-    player_one = Player.new("Player1", "X",self)
-    player_two = Player.new("Player2", "O",self)
+    
 
     # Run a loop wherein players1 and 2 will each take turns until one wins or it"s a draw - game_cycle
     game_cycle(player_one, player_two)
     game_end
   end
 
+  def game_mode
+    puts "Choose Game"
+    puts "|1 - Human vs Computer | |2 - Human vs Human|"
+    choice = gets.chomp!
+    until ["1", "2"].include?(choice)
+      puts "Invalid Option"
+      puts "|1 - Human vs Computer | |2 - Human vs Human|"
+      choice = gets.chomp!
+    end
+    choice.to_i
+  end
 
   def game_cycle(player1, player2)
     board.size.times do
