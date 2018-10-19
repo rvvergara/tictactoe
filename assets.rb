@@ -22,7 +22,7 @@ module Assets
     puts TITLE
     115.times { print "="; }
     puts "\n\n"
-    puts "-- Created Date - 18 Sep 2018 --"
+    puts "-- Created Date - 18 Oct 2018 --"
     puts "== Author - Ryan & Dipto =="
   end
 
