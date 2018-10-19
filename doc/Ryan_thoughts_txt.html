@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>Ryan_thoughts - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./README_md.html">README</a>
+  
+    <li><a href="./Ryan_thoughts_txt.html">Ryan_thoughts</a>
+  
+    <li><a href="./tic-tac-toe_project_txt.html">tic-tac-toe_project</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page Ryan_thoughts.txt">
+
+<p>player1 = “X” player2 = “O”</p>
+
+<p>board = [0,1,2,3,4,5,6,7,8]</p>
+
+<p>visually this is the board :</p>
+
+<p>0 1 2 3 4 5 6 7 8</p>
+
+<p>WINNING_COMBOS = array of arrays of winning combinations of squares</p>
+
+<h1 id="label-5B">[<span><a href="#label-5B">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<pre> [0,1,2],
+ [3,4,5],
+ [6,7,8],
+ [0,3,6],
+ [1,4,7],
+ [2,5,8],
+ [0,4,8],
+ [6,4,2]
+]</pre>
+
+<p>turn : check which player is playing</p>
+
+<p>player choice = prompt current player for choice</p>
+
+<p>check if player choice is between “0” and board.length.to_s</p>
+<ul><li>
+<p>if it is not then “Invalid option” then ask for user choice again</p>
+</li></ul>
+
+<p>check if player choice is still inside the board for example  player1
+choice = “4” (before first ever move)-&gt; board = [0,1,2,3,4,5,6,7,8]
+-&gt; “4”.to_i is still in the board so: (after move) -&gt; board =
+[0,1,2,3,“X”,5,6,7,8] -then player1&#39;s moves array = [4]</p>
+
+<p>check then if player1 has won: check player1&#39;s current moves array
+against each element (each is an array) of the winning_combos array. If all
+of a particular combo&#39;s elements are present in player1&#39;s moves
+array the player1 has won</p>
+
+<p>for example (after many moves): player1&#39;s moves array = [4,2,7,6]
+checking player1&#39;s moves array against “each” element of the
+winning_combos array</p>
+
+<pre>[0,1,2] vs [4,2,7,6] -&gt; only 2 is in moves
+[3,4,5] vs [4,2,7,6] -&gt; only 4 is in moves
+[6,7,8] vs [4,2,7,6] -&gt; only 6, 7 are in moves
+[0,3,6] vs [4,2,7,6] -&gt; only 6 are in moves
+[1,4,7] vs [4,2,7,6] -&gt; only 4,7 are in moves
+[2,5,8] vs [4,2,7,6] -&gt; none are in moves
+[0,4,8] vs [4,2,7,6] -&gt; only 4 are in moves
+[6,4,2] vs [4,2,7,6] -&gt; *** 6,4,2 are all in moves!!!***</pre>
+
+<p>current status of board array = [0,1,“X”,3,“X”,5,“X”,“X”,8] visually:</p>
+
+<p>0 1 X 3 X 5 X X 8</p>
+
+<p>visually it is evident that player1 has won!</p>
+
+<p>if player1 has won then check_win will call game_over method</p>
+
+<p>scenario2: if player1&#39;s moves don&#39;t make him win, example moves =
+[4,2,7] board = [0,1,“X”,3,“X”,5,6,“X”,8] visually:</p>
+
+<p>0 1 X 3 X 5 6 X 8</p>
+
+<p>then check_win will check if board is completely occupied (no elements in
+the array is a number) and if it is fully occupied and nobody has won then
+will return that it&#39;s a tie..</p>
+
+<p>then player1 turn will be off and player2&#39;s turn will be on</p>
+
+<p>then the player2&#39;s turn logic will be the same as player1&#39;s</p>
+
+<p>IF THIS LOGIC IS GOOD then:</p>
+<ol><li>
+<p><a href="Game.html">Game</a> will be main class (all other classes are
+nested inside it)</p>
+<ul><li>
+<p>game will have a constant called</p>
+</li></ul>
+</li></ol>
+
+<p>WINNING_COMBOS =  [</p>
+
+<pre> [0,1,2],
+ [3,4,5],
+ [6,7,8],
+ [0,3,6],
+ [1,4,7],
+ [2,5,8],
+ [0,4,8],
+ [6,4,2]
+]
+
+ - game will have game_start method
+   - game_start will call create_player method
+   - game will have an instance variable called @board = Board.new()
+   - game start will call generate_board method
+
+ - game will have generate_board method (which will always draw current status of board) based on current status of @board
+    - generate_board(board) will loop from 0 to @board.board.length-1 and draw:
+    if board[i].is_a? String then &quot;|_X_|&quot; or &quot;|_O_|&quot; depending on the character in that square
+    else it will just puts &quot;|___|&quot;
+    if @board.board.length % i == 0 then print an additional &quot;\n&quot;
+
+ - game will have gameover method
+   game_over method will just puts whoever wins or if it&#39;s a tie
+
+ - game will have change_turns method
+
+ - game will have check_win method
+    - check_win will do the functionality described above
+    - it will also check if all squares are occupied
+    - if all squares are occupied and nobody has won then it will return that it&#39;s a tie
+    - it will return 
+
+ - game will have reset method
+   - reset method will set players&#39; moves back to []
+   - reset method will reassign @board = Board.new()
+   - reset will then call again generate_board(player_1,player_2)
+
+ - will have a class variable called @@players_count starting from 0
+
+ - will have method called create_player which will instantiate Player class
+    - each instantiation will += 1 to @@players_count
+    - if @@players_count == 1 then instantiate players with Player.new(&quot;Player1&quot;, &quot;X&quot;)
+    - if @@players_count == 2 then instantiate players with Player.new(&quot;Player2&quot;, &quot;O&quot;)
+    - create_player will only be called if method game_start is called</pre>
+<ol><li>
+<p>Board class</p>
+<ul><li>
+<p>board will have @board as instance variable (array of numbers) and will be
+instantiated as</p>
+</li></ul>
+
+<p>@board = [0,1,2,3,4,5,6,7,8]</p>
+</li><li>
+<p><a href="Player.html">Player</a> class -&gt; this will have a method called
+turn (whose logic is described above)</p>
+
+<pre>- each player will have an instance variable called @name and it will be either &quot;Player1&quot; or &quot;Player2&quot;
+- each player will have instance variable @sign and it will be &quot;X&quot; or &quot;Y&quot; depending if Player1 or Player2
+- player class will have moves array (array of numbers representing squares player has occupied)
+- turn method will be as described above</pre>
+</li><li>
+<p><a href="Player.html">Player</a> class will have two subclasses -&gt;
+Human, Computer -&gt; the Computer class will override the turn method (the
+only difference is that the Computer&#39;s choice is random)</p>
+</li></ol>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
