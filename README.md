@@ -18,6 +18,19 @@ You will need at least Ruby 2.5.1 installed in your computer in order to play th
 
 To install Ruby visit its [installation instructions page](https://www.ruby-lang.org/en/documentation/)
 
-### Gameplay
+### Scrrenshots
+
+![Tic-Tac-Toe](image.png "Terminal View")
+
+```
+Our game board format
+=========================
+
+      0 | 1 | 2
+      ---------
+      3 | 4 | 5
+      ---------
+      6 | 7 | 8
+```
 
 ### Enjoy the game!
