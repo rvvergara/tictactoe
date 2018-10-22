@@ -18,45 +18,41 @@ module GameActions
   def game_start
     # Welcome screen - call show_title method
     show_title
+    # Create players1 and 2 - initialize both players
+    player_one = Human.new("Player1", "X", self)
+    mode = game_mode
+    player_two = Human.new("Player2", "O", self) if mode == 2
+    player_two = Computer.new("Computer", "0", self) if mode == 1
+
     # Draw initial board - initialize board
     generate_board(board)
-    # Create players1 and 2 - initialize both players
-    player_one = Player.new("Player1", "X")
-    player_two = Player.new("Player2", "O")
-
     # Run a loop wherein players1 and 2 will each take turns until one wins or it"s a draw - game_cycle
     game_cycle(player_one, player_two)
     game_end
   end
 
-  def turn(player)
-    # the player will be prompted to choose a square
-    puts "#{player.name} your move!"
-    square_select = gets.chomp!
-    # the response of the player will first be validated if it"s between 0 - 8
-    # the response of the player will be checked if it"s already unavailable
-    until square_select.between?("0", "8") && board.include?(square_select.to_i)
-      puts "Hey! invalid input. Select a valid square!"
-      square_select = gets.chomp!
+  def game_mode
+    puts "Choose Game"
+    puts "|1 - Human vs Computer | |2 - Human vs Human|"
+    choice = gets.chomp!
+    until %w[1 2].include?(choice)
+      puts "Invalid Option"
+      puts "|1 - Human vs Computer | |2 - Human vs Human|"
+      choice = gets.chomp!
     end
-    # if the square is still available then board[choice] = player.sign
-    board[square_select.to_i] = player.sign
-    # and then push the choice (convert it first to an integer) to player.moves
-    player.moves.push(square_select.to_i)
-    # then call generate_board to visualize new state of the board
-    generate_board(board)
+    choice.to_i
   end
 
   def game_cycle(player1, player2)
     board.size.times do
-      turn(player1)
+      player1.turn
       if check_win(player1)
         puts "Player One Win!"
         return
       end
       break if check_draw
 
-      turn(player2)
+      player2.turn
       if check_win(player2)
         puts "Player Two Win!"
         return
