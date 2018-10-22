@@ -1,10 +1,10 @@
 orig_board = ["O", 1, "X", "X", 4, "X", 6, "O", "O"]
 
-computer = {
+$computer = {
   :sign => "X",
   :moves => [2, 3, 5],
 }
-human = {
+$human = {
   :sign => "O",
   :moves => [0, 7, 8],
 }
@@ -41,25 +41,43 @@ def minmax(board, player)
   # Store different choices into an array
   choices = []
   # Store opponent in a variable
-  opponent = player == computer ? human : computer
-  # Check if win,lose or draw
-  return {:score => 10} if checkWin(player)
-  return {:score => -10} if checkWin(opponent)
-  return {score => 0} if available_squares.empty? 
-  # Iterate through each of the available squares to score choices
+  opponent = player == $computer ? $human : $computer
+
+  return {:score => 10} if checkWin($computer) 
+  return {:score => -10} if checkWin($human) 
+  return {:score => 0} if available_squares.size == 0 
+
   for i in 0...available_squares.size
-    # store move in a hash with a property called index equal to the first element in available_squares
-    move = {index => board_state[available_squares[i]]}
-    # Store temporarily board_state affected element for later reset
+    # Store move
+    move = {:index => board_state[available_squares[i]]}
+    # Store in a temporary variable the square which will be played, for resetting later
     reset_el = board_state[available_squares[i]]
-    # Change the value of the element in board_state
+    # Place move
     board_state[available_squares[i]] = player[:sign]
+    # Run method recursively and store result of recursive call into result, set move's score property to result's score
     result = minmax(board_state, opponent)
-    move.score = result.score
+    move[:score] = result[:score]
     choices.push(move)
+    # Reset board_state
     board_state[available_squares[i]] = reset_el
   end
-  choices
+
+  #Determine computer's best move based on maximizing score in the choices array
+  if(player == $computer) then
+    best = -1000
+    choices.each do |choice|
+      best = choice[:score] if choice[:score] > best
+      return choice  
+    end
+  end 
+
+  if(player == $human) then
+    best = 1000
+    choices.each do |choice|
+      best = choice[:score] if choice[:score] < best
+      return choice  
+    end
+  end 
 end
 
-puts minmax(orig_board, computer)
+puts minmax(orig_board, $computer)
