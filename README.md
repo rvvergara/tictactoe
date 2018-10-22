@@ -18,7 +18,7 @@ You will need at least Ruby 2.5.1 installed in your computer in order to play th
 
 To install Ruby visit its [installation instructions page](https://www.ruby-lang.org/en/documentation/)
 
-### Scrrenshots
+### Screenshots
 
 ![Tic-Tac-Toe](image.png "Terminal View")
 
