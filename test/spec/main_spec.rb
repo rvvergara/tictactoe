@@ -3,6 +3,7 @@ require_relative "../../classes/game"
 RSpec.describe Game do
   game = Game.new
   player = Human.new("Human","X",game)
+  computer = Computer.new("Computer", "O", game)
   describe "#initialize" do
     it "creates a board" do
       expect(game.board).to eql([0, 1, 2, 3, 4, 5, 6, 7, 8])
@@ -24,6 +25,18 @@ RSpec.describe Game do
     end
   end
 
+  # Test check_draw 
+  describe "#check_draw" do
+    it "can determine whether a game draw" do
+      game.board = ['o','x','x','x','x','o','x','o','o']
+      expect(game.check_draw).to eql(true)
+    end
+  end
+
+  # Test computer input
+  describe '' do
+    
+  end
 end
 
 # What to test:
