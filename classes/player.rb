@@ -49,7 +49,7 @@ class Computer < Player
     # the response of the player will first be validated if it"s between 0 - 8
     # the response of the player will be checked if it"s already unavailable
     until square_select.between?("0", "8") && @game_board.include?(square_select.to_i)
-      puts "Computer still thinking"
+      puts "#{@name} still thinking"
       square_select = rand(0..@game_board.size).to_s
     end
     square_select

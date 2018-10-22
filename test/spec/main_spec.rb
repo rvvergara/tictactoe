@@ -23,19 +23,30 @@ RSpec.describe Game do
       player.moves = [0,1,2]
       expect(game.check_win(player)).to eql(true)
     end
+
+    it "determines if someone wins or it's a draw" do
+      robots_game = Game.new
+      robocop = Computer.new("Robocop","X",robots_game)
+      terminator = Computer.new("Terminator", "O", robots_game)
+      expect(robots_game.game_cycle(robocop,terminator)).to be_between(0,2)
+    end
+
   end
 
   # Test check_draw 
   describe "#check_draw" do
     it "can determine whether a game draw" do
-      game.board = ['o','x','x','x','x','o','x','o','o']
-      expect(game.check_draw).to eql(true)
+      game2 = Game.new
+      game2.board = ['o','x','x','x','x','o','x','o','o']
+      expect(game2.check_draw).to eql(true)
     end
   end
 
   # Test computer input
-  describe '' do
-    
+  describe "#make_choice" do
+    it "returns the computer's choice which is a string form of a numeric value between 0 and 8" do
+      expect(computer.make_choice).to be_between("0", "8")
+    end
   end
 end
 
