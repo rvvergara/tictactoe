@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>tic-tac-toe_project - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-"></a>
+    <li><a href="#label-"></a>
+    <li><a href="#label-"></a>
+    <li><a href="#label-"></a>
+    <li><a href="#label-"></a>
+    <li><a href="#label-"></a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./README_md.html">README</a>
+  
+    <li><a href="./Ryan_thoughts_txt.html">Ryan_thoughts</a>
+  
+    <li><a href="./tic-tac-toe_project_txt.html">tic-tac-toe_project</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page tic-tac-toe_project.txt">
+
+<p>Tic-Tac-Toe</p>
+
+<p>File Structure</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<p>modules</p>
+
+<pre>contains all module files</pre>
+
+<p>classes</p>
+
+<pre class="ruby"><span class="ruby-identifier">contains</span> <span class="ruby-identifier">all</span> <span class="ruby-identifier">classes</span>
+</pre>
+
+<p>main file</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<p>Code Plane</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+<ol><li>
+<p>1-d Array contains all input</p>
+</li><li>
+<p>array legends will be [1 2 3 4 5 6 7 8 9]</p>
+</li><li>
+<p>showing formates</p>
+
+<pre class="ruby"><span class="ruby-value">1</span> <span class="ruby-operator">|</span> <span class="ruby-value">2</span> <span class="ruby-operator">|</span> <span class="ruby-value">3</span>
+<span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span>
+<span class="ruby-value">4</span> <span class="ruby-operator">|</span> <span class="ruby-value">5</span> <span class="ruby-operator">|</span> <span class="ruby-value">6</span>
+<span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span><span class="ruby-operator">-</span>
+<span class="ruby-value">7</span> <span class="ruby-operator">|</span> <span class="ruby-value">8</span> <span class="ruby-operator">|</span> <span class="ruby-value">9</span>
+</pre>
+</li><li>
+<p>There will be 2 player I mean Human vs Human (Human vs Computer will be
+updated version)</p>
+</li><li>
+<p>Ask for players choice maybe 1st letter of their name or anything they
+choose. Default will be “o” and “x”</p>
+
+<pre>formate will be something like that 
+  &quot;Insert Player 1 name (default = &quot;Player 1&quot;)&quot; // Optional
+  &quot;Insert Player 1 char (default = &quot;o&quot;)&quot; //Optional
+  &quot;Insert Player 2 name (default = &quot;Player 2&quot;)&quot; // Optional
+  &quot;Insert Player 2 char (default = &quot;x&quot;)&quot; //Optional
+should be check that both input must be uniqe</pre>
+</li><li>
+<p>Maybe also show an msg about game start (and || or) ask for input cell
+number from 1-9 [check validation]</p>
+</li><li>
+<p>after input show the table with input</p>
+
+<pre>example : suppose player 1 input is 5 then it will be show that board
+
+            1 | 2 | 3
+            ---------
+            4 | x | 6
+            ---------
+            7 | 8 | 9
+just need to be replace with legends
+same for player 2 suppose input is 1
+            o | 2 | 3
+            ---------
+            4 | x | 6
+            ---------
+            7 | 8 | 9</pre>
+</li><li>
+<p><a href="Game.html">Game</a> continue untile anyone won or draw</p>
+</li><li>
+<p>After ending the game it show the game status like who won? and [how many
+steps he played for won (Optional)] or if draw then just end the game</p>
+</li><li>
+<p>Maybe without ending we should ask users “wanna play again?” if no then
+quit app</p>
+</li></ol>
+
+<p>Visualization</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<pre>    Tic-Tac-Toe
+=====================
+    created date
+  -----------------
+        Authors</pre>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+
+<p>Insert <a href="Player.html">Player</a> 1 name (default = “Player 1”) John
+Insert <a href="Player.html">Player</a> 1 char (default = “o”) x Insert <a
+href="Player.html">Player</a> 2 name (default = “Player 2”) Jenny Insert <a
+href="Player.html">Player</a> 2 char (default = “x”)“ o</p>
+
+<p>Best of luck <a href="x">John</a> and <a href="0">Jenny</a></p>
+
+<p>1 | 2 | 3</p>
+<hr>
+
+<p>4 | 5 | 6</p>
+<hr>
+
+<p>7 | 8 | 9</p>
+
+<p>John insert cell number between 1 to 9 : 5</p>
+
+<p>1 | 2 | 3</p>
+<hr>
+
+<p>4 | x | 6</p>
+<hr>
+
+<p>7 | 8 | 9</p>
+
+<p>Jenny insert cell number between 1 to 9 : 1</p>
+
+<p>o | 2 | 3</p>
+<hr>
+
+<p>4 | x | 6</p>
+<hr>
+
+<p>7 | 8 | 9</p>
+
+<p>John insert cell number between 1 to 9 : 1 SORRY! Already have. Please
+choose another one John insert cell number between 1 to 9 : 2</p>
+
+<p>o | x | 3</p>
+<hr>
+
+<p>4 | x | 6</p>
+<hr>
+
+<p>7 | 8 | 9</p>
+
+<p>Jenny insert cell number between 1 to 9 : 8</p>
+
+<p>o | x | 3</p>
+<hr>
+
+<p>4 | x | 6</p>
+<hr>
+
+<p>7 | o | 9</p>
+
+<p>. . .</p>
+
+<p>o | x | o</p>
+<hr>
+
+<p>x | x | o</p>
+<hr>
+
+<p>x | o | o</p>
+
+<p><a href="Game.html">Game</a> status : Match Draw! x | x | o</p>
+<hr>
+
+<p>x | x | o</p>
+<hr>
+
+<p>x | o | x</p>
+
+<p><a href="Game.html">Game</a> status : John win!</p>
+
+<p>Wanna play again? no Thanks for playing!</p>
+
+<p>Algorithm [Plain Text]</p>
+
+<h6 id="label-"><span><a href="#label-">&para;</a> <a href="#top">&uarr;</a></span></h6>
+<ol><li>
+<p>One game class where we put all the methods initialize with players name
+and char</p>
+</li><li>
+<p>Class variables player1_name, player2_name, player1_char, player2_char,
+player1_cell, player2_cell, init</p>
+</li><li>
+<p>Methods start_game, draw_board, cell_choose,
+game_state_check,update_array,end_game</p>
+
+<pre>start_game
+==========
+  &gt; Show wish string
+  &gt; create 1-d array with 1-9 legends when init is true
+  &gt; call draw_board 
+  &gt; call cell_choose
+draw_board
+==========
+  &gt; creating board from 1-d array in below format
+    1 | 2 | 3
+    ---------
+    4 | x | 6
+    ---------
+    7 | 8 | 9
+
+cell_choose
+===========
+&gt; ask p1 inputs
+&gt; assigns all of inputs in class variable
+&gt; update array
+&gt; draw_board
+&gt; ask p2 inputs
+&gt; assigns all of inputs in class variable
+&gt; update array
+&gt; draw_board</pre>
+</li></ol>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.0.4.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
