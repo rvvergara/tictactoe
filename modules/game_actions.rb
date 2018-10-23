@@ -48,18 +48,19 @@ module GameActions
       player1.turn
       if check_win(player1)
         puts "Player One Win!"
-        return
+        return 1
       end
       break if check_draw
 
       player2.turn
       if check_win(player2)
         puts "Player Two Win!"
-        return
+        return 2
       end
       break if check_draw
     end
     puts "It's a Draw!!!"
+    return 0
   end
 
   def check_win(player)
