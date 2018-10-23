@@ -1,12 +1,15 @@
+require_relative "../modules/minmax"
 # Player classes that will be playing the game
+
 class Player
+  include Minimax
   attr_accessor :name, :sign, :moves
   def initialize(name, sign, parent)
     @name = name
     @sign = sign
     @moves = []
     @parent = parent
-    @game_board = parent.board
+    @game_board = @parent.board
   end
 
   def generate_board
@@ -42,16 +45,17 @@ end
 
 # Computer Class
 class Computer < Player
-  def make_choice
-    # the computer will be randomly choose a square
-    puts "#{@name} is thinking of a move!..."
-    square_select = rand(0..@game_board.size).to_s
-    # the response of the player will first be validated if it"s between 0 - 8
-    # the response of the player will be checked if it"s already unavailable
-    until square_select.between?("0", "8") && @game_board.include?(square_select.to_i)
-      puts "#{@name} still thinking"
-      square_select = rand(0..@game_board.size).to_s
-    end
-    square_select
+  attr_accessor :name, :sign, :moves
+  def initialize(name, sign, parent)
+    @name = name
+    @sign = sign
+    @moves = []
+    @parent = parent
+    @game_board = parent.board
   end
-end
+
+  def make_choice
+    minimax(@game_board, self)[:index]
+  end
+
+end #Computer class end
