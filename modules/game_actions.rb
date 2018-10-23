@@ -20,8 +20,7 @@ module GameActions
     show_title
     # Create players1 and 2 - initialize both players
     @player_one = Human.new("Player1", "X", self)
-    # mode = game_mode
-    mode = 1
+    mode = game_mode
     @player_two = Human.new("Player2", "O", self) if mode == 2
     @player_two = Computer.new("Computer", "0", self) if mode == 1
 
