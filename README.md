@@ -15,16 +15,18 @@ In order to play the game in your computer you need to clone this repository:
 ## Prerequisites
 
 ### Windows Users:
+
 Go to bin folder and unzip tictactoe.zip file and run tictactoe.exe
 
 ### Linux Users:
+
 You will need at least Ruby 2.5.1 installed in your computer in order to play this game.
 
 To install Ruby visit its [installation instructions page](https://www.ruby-lang.org/en/documentation/)
 
 ### Screenshots
 
-![Tic-Tac-Toe](image.png "Terminal View")
+![Tic-Tac-Toe](tic_tac_toe.gif "Terminal View")
 
 ```
 Our game board format
