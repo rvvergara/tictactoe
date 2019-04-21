@@ -1,15 +1,16 @@
 require_relative "../modules/game_actions"
 # Main game class
 class Game
-  include GameActions
-  # Important variables
-  attr_accessor :board, :player_one, :player_two
-  def initialize
-    @board = (0..8).to_a
+  # include GameActions
+  attr_accessor :board, :player_one, :player_two, :board_generate_method
+  def initialize(game_args, generate_board)
+    @player_one = game_args[:player_one]
+    @player_two = game_args[:player_two]
+    @board = game_args[:board]
+    @board_generate_method = generate_board
   end
 
   def cycle
-    end_game?
     until end_game?
       player_turn(player_one)
       player_turn(player_two)
@@ -28,7 +29,7 @@ class Game
   private
 
   def player_turn(player)
-    player.turn
-    player_won?(player) if end_game?
+    player.turn unless end_game?
+    board_generate_method.call(board.grid)
   end
 end

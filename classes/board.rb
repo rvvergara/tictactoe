@@ -1,6 +1,6 @@
 # Board Class
 class Board
-  attr_reader :grid
+  attr_reader :grid, :winning_combo
   def initialize
     @grid = (0..8).to_a
     @winning_combo = [
@@ -23,6 +23,6 @@ class Board
 
   # Method that will compute number of unselected squares
   def empty_squares
-    grid.select { |square| square.class == "Integer" }
+    grid.reject { |square| square.class == "Integer" }
   end
 end

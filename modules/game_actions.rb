@@ -1,4 +1,5 @@
 require_relative "../classes/player"
+require_relative "../classes/board"
 require_relative "../assets"
 # WINNING COMBOS CONSTANT
 WINNING_COMBOS = [

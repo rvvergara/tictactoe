@@ -1,29 +1,22 @@
 require_relative "../modules/minmax"
 require_relative "../modules/get_human_input"
+
 # Player classes that will be playing the game
-
 class Player
-  attr_reader :name, :sign, :moves, :game_board, :parent
-  def initialize(name, sign, parent)
-    @name = name
-    @sign = sign
+  attr_reader :name, :sign, :moves, :board
+  def initialize(player_args)
+    @name = player_args[:name]
+    @sign = player_args[:sign]
+    @board = player_args[:board]
     @moves = []
-    @parent = parent
-    @game_board = @parent.board
-  end
-
-  def generate_board
-    parent.generate_board(game_board)
   end
 
   def turn
     square_select = make_choice
     # if the square is still available then board[choice] = player.sign
-    game_board[square_select.to_i] = sign
+    board.grid[square_select.to_i] = sign
     # and then push the choice (convert it first to an integer) to player.moves
     moves.push(square_select.to_i)
-    # then call generate_board to visualize new state of the board
-    generate_board
   end
 end
 
@@ -38,4 +31,4 @@ class Computer < Player
   def make_choice
     minimax(@game_board, self)[:index]
   end
-end # Computer class end
+end
