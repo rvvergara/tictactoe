@@ -1,4 +1,3 @@
-require_relative "../modules/minmax"
 # Player classes that will be playing the game
 class Player
   attr_reader :name, :sign, :moves, :board

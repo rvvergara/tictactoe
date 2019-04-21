@@ -1,5 +1,6 @@
+require_relative "./tic_tac_toe.rb"
+
 module UserInterfaceModule
-  # generate_board will draw board itself
   def generate_board_display(arr)
     (0...arr.size).each do |i|
       print "\n" if [0, 3, 6].include? i
@@ -22,7 +23,7 @@ module UserInterfaceModule
       choice = gets.chomp!.downcase
     end
     if %w[y yes].include?(choice)
-      Game.new.game_start
+      run_game
     else
       puts "Thank you dawg!!! Have some Kitkat"
       exit

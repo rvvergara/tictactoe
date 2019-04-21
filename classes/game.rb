@@ -1,6 +1,6 @@
-require_relative "../modules/ui_module.rb"
-require_relative "../modules/get_human_input.rb"
-require_relative "../modules/minmax.rb"
+require_relative "../helpers/ui_module.rb"
+require_relative "../helpers/get_human_input.rb"
+require_relative "../helpers/minmax.rb"
 # Main game class
 class Game
   include UserInterfaceModule
