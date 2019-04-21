@@ -1,6 +1,6 @@
 # Module to prompt human for choice
 module GetHumanInput
-  def make_choice
+  def make_choice(name)
     # the player will be prompted to choose a square
     puts "#{name} your move!"
     square_select = gets.chomp!

@@ -10,13 +10,13 @@ mode = gets.chomp!
 
 board = Board.new
 
-player1 = Human.new(
+player1 = Player.new(
   name: "Player1",
   sign: "X",
   board: board
 )
 
-player2 = Human.new(
+player2 = Player.new(
   name: "Player2",
   sign: "O",
   board: board

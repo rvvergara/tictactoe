@@ -1,7 +1,11 @@
 require_relative "../modules/ui_module.rb"
+require_relative "../modules/get_human_input.rb"
+require_relative "../modules/minmax.rb"
 # Main game class
 class Game
   include UserInterfaceModule
+  include GetHumanInput
+  include Minimax
 
   attr_reader :board, :player_one, :player_two, :board_generate_method, :mode
 
@@ -13,11 +17,9 @@ class Game
   end
 
   def cycle
-    if mode == 2
-      until end_game?
-        player_turn(player_one)
-        player_turn(player_two)
-      end
+    until end_game?
+      human_turn(player_one)
+      mode == 2 ? human_turn(player_two) : computer_turn(self, player_two)
     end
   end
 
@@ -33,8 +35,19 @@ class Game
 
   private
 
-  def player_turn(player)
-    player.turn unless end_game?
+  def human_turn(player)
+    unless end_game?
+      choice = make_choice(player.name).to_i
+      player.turn(choice)
+    end
+    generate_board_display(board.grid)
+  end
+
+  def computer_turn(game, player)
+    unless end_game?
+      choice = minimax(game, player)[:index]
+      player.turn(choice)
+    end
     generate_board_display(board.grid)
   end
 end
