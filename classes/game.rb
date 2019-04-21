@@ -29,7 +29,7 @@ class Game
 
   def end_game?
     is_finished = player_won?(player_one) || player_won?(player_two) || board.empty_squares.empty?
-    game_end_display if is_finished
+    game_end_display(winner) if is_finished
     is_finished
   end
 
@@ -49,5 +49,11 @@ class Game
       player.turn(choice)
     end
     generate_board_display(board.grid)
+  end
+
+  def winner
+    return nil if board.empty_squares.empty?
+
+    player_won?(player_one) ? player_one.name : player_two.name
   end
 end

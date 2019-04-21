@@ -12,7 +12,9 @@ module UserInterfaceModule
     puts "\n\n"
   end
 
-  def game_end_display
+  def game_end_display(name)
+    puts "#{name} wins" if name
+    puts "It's a draw!" if name.nil?
     puts "Hey! Do you wanna play again?[y,n]"
     choice = gets.chomp!.downcase
     until %w[y n yes no].include?(choice)
@@ -25,5 +27,9 @@ module UserInterfaceModule
       puts "Thank you dawg!!! Have some Kitkat"
       exit
     end
+  end
+
+  def display_winner(player)
+    puts "#{player.name} wins!"
   end
 end
