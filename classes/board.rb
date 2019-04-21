@@ -16,12 +16,10 @@ class Board
     ]
   end
 
-  # Method to receive player's choice
   def receive_choice(index, player)
     grid[index] = player.sign
   end
 
-  # Method that will compute number of unselected squares
   def empty_squares
     grid.select { |square| square.class == Integer }
   end

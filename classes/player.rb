@@ -10,10 +10,7 @@ class Player
   end
 
   def turn(index)
-    # square_select = make_choice
-    # if the square is still available then board[choice] = player.sign
     board.grid[index] = sign
-    # and then push the choice (convert it first to an integer) to player.moves
     moves.push(index)
   end
 end
