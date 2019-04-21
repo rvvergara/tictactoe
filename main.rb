@@ -5,6 +5,9 @@ require_relative "./assets.rb"
 
 include Assets
 
+puts "1 Player | 2 Player"
+mode = gets.chomp!
+
 board = Board.new
 
 player1 = Human.new(
@@ -13,16 +16,17 @@ player1 = Human.new(
   board: board
 )
 
-player2 = Computer.new(
+player2 = Human.new(
   name: "Player2",
   sign: "O",
   board: board
 )
 
-game = Game.new({
-                  player_one: player1,
-                  player_two: player2,
-                  board: board
-                }, generate_board = method(:generate_board))
+game = Game.new(
+  player_one: player1,
+  player_two: player2,
+  board: board,
+  mode: mode
+)
 
 puts game.cycle

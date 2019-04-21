@@ -1,35 +1,40 @@
-require_relative "../modules/game_actions"
+require_relative "../modules/ui_module.rb"
 # Main game class
 class Game
-  # include GameActions
-  attr_accessor :board, :player_one, :player_two, :board_generate_method
-  def initialize(game_args, generate_board)
+  include UserInterfaceModule
+
+  attr_reader :board, :player_one, :player_two, :board_generate_method, :mode
+
+  def initialize(game_args)
     @player_one = game_args[:player_one]
     @player_two = game_args[:player_two]
     @board = game_args[:board]
-    @board_generate_method = generate_board
+    @mode = game_args[:mode].to_i
   end
 
   def cycle
-    until end_game?
-      player_turn(player_one)
-      player_turn(player_two)
+    if mode == 2
+      until end_game?
+        player_turn(player_one)
+        player_turn(player_two)
+      end
     end
   end
 
-  # Method to check if one of the players has one
   def player_won?(player)
     board.winning_combo.any? { |combo| combo.all? { |choice| player.moves.include?(choice) } }
   end
 
   def end_game?
-    player_won?(player_one) || player_won?(player_two) || board.empty_squares.empty?
+    is_finished = player_won?(player_one) || player_won?(player_two) || board.empty_squares.empty?
+    game_end_display if is_finished
+    is_finished
   end
 
   private
 
   def player_turn(player)
     player.turn unless end_game?
-    board_generate_method.call(board.grid)
+    generate_board_display(board.grid)
   end
 end

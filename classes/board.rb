@@ -23,6 +23,6 @@ class Board
 
   # Method that will compute number of unselected squares
   def empty_squares
-    grid.reject { |square| square.class == "Integer" }
+    grid.select { |square| square.class == Integer }
   end
 end
