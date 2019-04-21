@@ -1,8 +1,8 @@
 require_relative "../modules/minmax"
+require_relative "../modules/get_human_input"
 # Player classes that will be playing the game
 
 class Player
-  include Minimax
   attr_reader :name, :sign, :moves, :game_board, :parent
   def initialize(name, sign, parent)
     @name = name
@@ -29,22 +29,12 @@ end
 
 # Human subclass
 class Human < Player
-  def make_choice
-    # the player will be prompted to choose a square
-    puts "#{@name} your move!"
-    square_select = gets.chomp!
-    # the response of the player will first be validated if it"s between 0 - 8
-    # the response of the player will be checked if it"s already unavailable
-    until square_select.between?("0", "8") && game_board.include?(square_select.to_i)
-      puts "Hey! invalid input. Select a valid square!"
-      square_select = gets.chomp!
-    end
-    square_select
-  end
+  include GetHumanInput
 end
 
 # Computer Class
 class Computer < Player
+  include Minimax
   def make_choice
     minimax(@game_board, self)[:index]
   end
