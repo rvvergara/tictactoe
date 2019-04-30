@@ -1,11 +1,10 @@
 require_relative "../helpers/ui_module.rb"
-require_relative "../helpers/get_human_input.rb"
-require_relative "../helpers/get_computer_input.rb"
+require_relative "../helpers/get_player_input.rb"
+
 # Main game class
 class Game
   include UserInterfaceModule
-  include GetHumanInput
-  include GetComputerInput
+  include GetPlayerInput
 
   attr_reader :board, :player_one, :player_two, :board_generate_method, :mode
 
@@ -18,8 +17,8 @@ class Game
 
   def cycle
     until end_game?
-      human_turn(player_one, board)
-      mode == 2 ? human_turn(player_two, board) : computer_turn(self, player_two, board)
+      player_turn(self, player_one, board)
+      player_turn(self, player_two, board)
     end
   end
 

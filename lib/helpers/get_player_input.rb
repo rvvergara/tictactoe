@@ -1,8 +1,15 @@
+require_relative "../helpers/minimax.rb"
 # Module to prompt human for choice
-module GetHumanInput
-  def human_turn(player, board)
+module GetPlayerInput
+  include Minimax
+
+  def player_turn(game, player, board)
     unless end_game?
-      choice = human_choice(player.name).to_i
+      choice = if game.mode == 1
+                 player.sign == "X" ? human_choice(player.name).to_i : minimax(game, player)[:index]
+               else
+                 human_choice(player.name).to_i
+               end
       player.turn(choice)
     end
     generate_board_display(board.grid)
