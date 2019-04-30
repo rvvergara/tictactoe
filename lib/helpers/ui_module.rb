@@ -1,4 +1,4 @@
-require_relative "./tic_tac_toe.rb"
+require_relative "./game_run.rb"
 
 module UserInterfaceModule
   def generate_board_display(arr)
