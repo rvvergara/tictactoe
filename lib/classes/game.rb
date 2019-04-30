@@ -3,10 +3,10 @@ require_relative "../helpers/get_player_input.rb"
 
 # Main game class
 class Game
-  include UserInterfaceModule
+  include UserInterfaceModule # Methods from UIModule: generate_board_display and game_end_display
   include GetPlayerInput
 
-  attr_reader :board, :player_one, :player_two, :board_generate_method, :mode
+  attr_reader :board, :player_one, :player_two, :mode
 
   def initialize(game_args)
     @player_one = game_args[:player_one]
