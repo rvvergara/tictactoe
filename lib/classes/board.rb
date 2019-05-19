@@ -1,6 +1,6 @@
 # Board Class
 class Board
-  attr_reader :grid, :winning_combo
+  attr_reader :grid
   def initialize
     @grid = (0..8).to_a
     @winning_combo = [
@@ -18,5 +18,9 @@ class Board
 
   def available_spots
     grid.select { |square| square.class == Integer }
+  end
+
+  def in_winning_combo?(moves)
+    @winning_combo.any? { |combo| combo.all? { |choice| moves.include?(choice) } }
   end
 end

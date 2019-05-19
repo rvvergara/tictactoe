@@ -23,7 +23,7 @@ class Game
   end
 
   def player_won?(player)
-    board.winning_combo.any? { |combo| combo.all? { |choice| player.moves.include?(choice) } }
+    board.in_winning_combo?(player.moves)
   end
 
   private
