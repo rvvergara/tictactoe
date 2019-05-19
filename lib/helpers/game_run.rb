@@ -10,14 +10,12 @@ def run_game
 
   player1 = Player.new(
     name: "Player1",
-    sign: "X",
-    board: board
+    sign: "X"
   )
 
   player2 = Player.new(
     name: "Player2",
-    sign: "O",
-    board: board
+    sign: "O"
   )
 
   game = Game.new(

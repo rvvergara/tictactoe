@@ -1,7 +1,7 @@
 module Minimax
   def minimax(game, player)
     board = game.board
-    available_spots = board.empty_squares
+    available_spots = board.available_spots
     # Check for terminal states
     return { score: -10 } if game.player_won?(game.player_one)
     return { score: 10 } if game.player_won?(game.player_two)

@@ -29,13 +29,13 @@ class Game
   private
 
   def end_game?
-    is_finished = player_won?(player_one) || player_won?(player_two) || board.empty_squares.empty?
+    is_finished = player_won?(player_one) || player_won?(player_two) || board.available_spots.empty?
     game_end_display(winner) if is_finished
     is_finished
   end
 
   def winner
-    return nil if board.empty_squares.empty?
+    return nil if board.available_spots.empty?
 
     player_won?(player_one) ? player_one.name : player_two.name
   end

@@ -10,7 +10,7 @@ module GetPlayerInput
                else
                  human_choice(player.name).to_i
                end
-      player.turn(choice)
+      player.turn(choice, board)
     end
     generate_board_display(board.grid)
   end

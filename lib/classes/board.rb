@@ -16,11 +16,7 @@ class Board
     ]
   end
 
-  def receive_choice(index, player)
-    grid[index] = player.sign
-  end
-
-  def empty_squares
+  def available_spots
     grid.select { |square| square.class == Integer }
   end
 end
