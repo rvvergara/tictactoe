@@ -20,6 +20,7 @@ class Game
       player_turn(self, player_one, board)
       player_turn(self, player_two, board)
     end
+    game_end_display(winner) if end_game?
   end
 
   def player_won?(player)
@@ -29,9 +30,7 @@ class Game
   private
 
   def end_game?
-    is_finished = player_won?(player_one) || player_won?(player_two) || board.available_spots.empty?
-    game_end_display(winner) if is_finished
-    is_finished
+    player_won?(player_one) || player_won?(player_two) || board.available_spots.empty?
   end
 
   def winner
